@@ -1,0 +1,13 @@
+{
+  "name": "mdnsAdService",
+  "version": "0.0.1",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "express": "^4.15.2"
+  },
+  "scripts": {
+    "start": "babel-node server.js"
+  }
+}
