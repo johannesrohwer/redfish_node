@@ -4,6 +4,5 @@ start_x64: build_x64
 build_x64:
 	docker build -t mdns_ad_service -f ./Dockerfile.x64 .
 
-stop: SHELL:=/bin/bash
 stop:
-	docker stop $(SHELL sudo docker ps | grep mdns_ad_service | cut -c1-16)
+	docker stop $$(sudo docker ps | grep mdns_ad_service | cut -c1-16)
