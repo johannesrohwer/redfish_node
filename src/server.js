@@ -8,7 +8,7 @@ import fs from 'fs'
 // Constants
 const app = express()
 const config = {};
-config.port = 5000;
+config.port = process.env.SERVER_PORT;
 
 // API Routes
 app.get('/', (req, res) => {

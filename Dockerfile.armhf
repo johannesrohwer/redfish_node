@@ -1,0 +1,27 @@
+# current official NodeJS LTS container
+FROM armhf/node
+
+# Set up avahi
+RUN apt-get update -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get -qq install -y avahi-daemon avahi-utils \
+  && apt-get -qq -y autoclean \
+  && apt-get -qq -y autoremove \
+  && apt-get -qq -y clean
+
+# Create app directory
+RUN mkdir -p /usr/src/redfish
+WORKDIR /usr/src/redfish
+
+# Install npm dependencies
+COPY ./src/package.json /usr/src/redfish
+RUN npm install
+
+# Bundle app source
+COPY ./src /usr/src/redfish
+RUN chmod +x /usr/src/redfish/docker-entrypoint.sh
+
+# Expose ports
+EXPOSE 5000
+
+# Run entrypoint script
+ENTRYPOINT ["/usr/src/redfish/docker-entrypoint.sh"]
