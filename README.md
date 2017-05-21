@@ -4,11 +4,11 @@
  In order to use the package you need docker installed on your machine. To build and start the container simply run
 
 ```
-$> sudo make start_x64
+$> sudo make start_x64 SERVER_PORT=4000
 ```
 or
 ```
-$> sudo make start_armhf
+$> sudo make start_armhf SERVER_PORT=4000
 ``` 
 depending on your current architecture.
 
@@ -18,3 +18,4 @@ depending on your current architecture.
 ## Known Limitations
   - The current implementation needs access to the host network when the container is started (e.g. `--network=host`)
   in order to access the underlying network interface of the host.
+  - The current version does not support mDNS for multiple containers on a single host.
